@@ -3,6 +3,7 @@ import asyncio
 # The AWS Lambda handler
 def lambda_handler(event, context):
     asyncio.run(main())
+    return ('World')
 
 async def main():
     # Here you can await any awaitable
@@ -10,4 +11,3 @@ async def main():
     print('Hello')
     await asyncio.sleep(1)
     print('World...')
-    return('World')
