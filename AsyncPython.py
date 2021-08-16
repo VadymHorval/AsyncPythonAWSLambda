@@ -1,7 +1,7 @@
 import asyncio
 
 # The AWS Lambda handler
-def handler(event, context):
+def lambda_handler(event, context):
     asyncio.run(main())
 
 async def main():

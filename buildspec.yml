@@ -1,0 +1,14 @@
+version: 0.2
+phases:
+  install:
+    - echo "Instaling env..."
+    - pip install -r requirements.txt
+  build:
+    commands:
+      - echo "Zipping deployment package..."
+      - zip -r9 deployment_package.zip .
+      - zip -g deployment_package.zip AsyncPython.py
+  post_build:
+    commands:
+      - echo "Updating lambda Function..."
+      - aws lambda update-function-code --function-name github_async_python_to_lambda_demo --zip-file fileb://deployment_package.zip
