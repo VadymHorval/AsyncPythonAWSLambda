@@ -33,7 +33,7 @@ async def main():
     for i in data['records']:  # init buffer
         r_buffer.append(i['fields'].get('title'))
 
-    for j in range(len(r_buffer) + 3):  # init data for printing - one loop + three steps
-        print_list.append('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
-        r_buffer.rotate(1)
+    #for j in range(len(r_buffer) + 3):  # init data for printing - one loop + three steps
+    print_list.append('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
+    r_buffer.rotate(1)
 
