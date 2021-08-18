@@ -9,7 +9,7 @@ TABLE_NAME = 'MainTable'
 print_list = []
 def lambda_handler(event, context):
 
-    if context.client_context:
+    if type(context.client_context) is str:
         context.client_context += '1'
     else:
         context.client_context = '0'
