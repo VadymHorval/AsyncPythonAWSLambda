@@ -23,7 +23,7 @@ def lambda_handler(event, context):
 
     response = {
         "statusCode": 200,
-        "body": print_list
+        "body": "11111111111111111111111"
     }
     return response
 
@@ -42,5 +42,4 @@ async def main():
         r_buffer.append(i['fields'].get('title'))
 
     r_buffer.rotate(count)
-    print_list=('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
-
+    print_list = ('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
