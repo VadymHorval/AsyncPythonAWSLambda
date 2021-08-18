@@ -12,7 +12,7 @@ r_str = ''
 def lambda_handler(event, context):
 
     asyncio.run(main())
-    r_str = (' '.join(str(e) for e in print_list))
+    r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + context.aws_request_id
     response = {
         "statusCode": 200,
         "body": r_str
