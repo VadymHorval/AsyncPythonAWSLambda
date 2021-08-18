@@ -9,15 +9,6 @@ TABLE_NAME = 'MainTable'
 print_list = []
 
 def lambda_handler(event, context):
-
-    asyncio.run(main())
-    response = {
-        "statusCode": 200,
-        "body": json.dumps(str.join(print_list))
-    }
-    return response
-
-async def main():
     table_url = f'https://api.airtable.com/v0/{TABLE_ID}/{TABLE_NAME}?fields%5B%5D=ID&fields%5B%5D=title'
     HEADERS = {
         "Authorization": f"Bearer {API_KEY}",
@@ -34,3 +25,9 @@ async def main():
     for j in range(len(r_buffer) + 3):  # init data for printing - one loop + three steps
         print_list.append('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
         r_buffer.rotate(1)
+
+    return {
+        "statusCode": 200,
+        "body": json.dumps(str.join(print_list))
+    }
+
