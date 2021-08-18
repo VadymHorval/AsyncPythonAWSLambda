@@ -15,7 +15,7 @@ def lambda_handler(event, context):
         context.client_context = '0'
 
     asyncio.run(main())
-    r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + str(type(context.client_context)) +":::Event:"+ json.dumps(event)
+    r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + context.client_context +":::Event:"+ json.dumps(event)
     response = {
         "statusCode": 200,
         "body": r_str
