@@ -24,7 +24,7 @@ async def main():
         "Content-Type": "application/json"
     }
     http = urllib3.PoolManager()
-    r = http.requests('GET',url=table_url, headers=HEADERS)  # get data
+    r = http.request('GET',url=table_url, headers=HEADERS)  # get data
     data = r.json()
     r_buffer = collections.deque(maxlen=len(data['records']))  # create a ring buffer
 
