@@ -7,7 +7,7 @@ TABLE_ID = 'app3DEEwui4OTkeDI'
 API_KEY = 'keywRoiRn61Sk3nvo'
 TABLE_NAME = 'MainTable'
 print_list = []
-count = 0
+count = 2
 
 def lambda_handler(event, context):
     str_count = ''
