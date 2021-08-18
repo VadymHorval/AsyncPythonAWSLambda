@@ -10,10 +10,10 @@ print_list = []
 r_str = ''
 
 def lambda_handler(event, context):
-    if event['count']:
-        event['count'] +=1
+    if context['count']:
+        context['count'] +=1
     else:
-        event.add('count', 0)
+        context.add('count', 0)
 
     asyncio.run(main())
     r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + context.aws_request_id + json.dumps(event)
