@@ -7,14 +7,12 @@ TABLE_ID = 'app3DEEwui4OTkeDI'
 API_KEY = 'keywRoiRn61Sk3nvo'
 TABLE_NAME = 'MainTable'
 print_list = []
-r_str = ''
-
 def lambda_handler(event, context):
 
-    if context.client_context:
-        context.client_context = '1'
-    else:
-        context.client_context = '0'
+    # if context.client_context:
+    #     context.client_context = '1'
+    # else:
+    context.client_context = 'count'
 
     asyncio.run(main())
     r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + context.client_context +":::Event:""+ json.dumps(event)
@@ -41,4 +39,6 @@ async def main():
     #for j in range(len(r_buffer) + 3):  # init data for printing - one loop + three steps
     print_list.append('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
     r_buffer.rotate(1)
+
+r_str = ''
 
