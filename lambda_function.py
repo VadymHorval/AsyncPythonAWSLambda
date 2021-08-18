@@ -44,7 +44,7 @@ async def main():
     for i in data['records']:  # init buffer
         r_buffer.append(i['fields'].get('title'))
 
-    r_buffer.rotate(count)
+    r_buffer.rotate(0)
     print(r_buffer)
     r_str = ('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
     r_str1 = r_str
