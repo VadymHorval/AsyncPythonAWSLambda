@@ -10,18 +10,7 @@ print_list = ''
 count = 0
 
 def lambda_handler(event, context):
-    str_count = ''
-    global count
-
-    # for n in event["rawQueryString"]:
-    #     if n.isdigit():
-    #         str_count += n
-    # count = int(str_count)
-
     asyncio.run(main())
-    #r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + event["rawQueryString"] +":::Event:"+ json.dumps(event)
-    #r_str = (' '.join(str(e) for e in print_list)) + "!!!!!!!!!!!!!ID:" + str(count)
-
     response = {
         "statusCode": 200,
         "body": print_list
@@ -44,6 +33,6 @@ async def main():
     for i in data['records']:  # init buffer
         r_buffer.append(i['fields'].get('title'))
 
-    r_buffer.rotate(count)
+    r_buffer.rotate(count) #scroll the buffer
     count += 1
     print_list += ('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|::')
