@@ -8,9 +8,10 @@ API_KEY = 'keywRoiRn61Sk3nvo'
 TABLE_NAME = 'MainTable'
 print_list = []
 def lambda_handler(event, context):
-
+    print(type(context.client_context))
     if type(context.client_context) is str:
         context.client_context += '1'
+        print("+++++++++++")
     else:
         context.client_context = '0'
 
