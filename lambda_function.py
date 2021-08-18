@@ -7,13 +7,15 @@ TABLE_ID = 'app3DEEwui4OTkeDI'
 API_KEY = 'keywRoiRn61Sk3nvo'
 TABLE_NAME = 'MainTable'
 print_list = []
+r_str = ''
 
 def lambda_handler(event, context):
 
     asyncio.run(main())
+    r_str = (' '.join(str(e) for e in print_list))
     response = {
         "statusCode": 200,
-        "body": json.dumps(' '.join(str(e) for e in print_list))
+        "body": r_str
     }
     return response
 
@@ -34,3 +36,4 @@ async def main():
     for j in range(len(r_buffer) + 3):  # init data for printing - one loop + three steps
         print_list.append('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
         r_buffer.rotate(1)
+
