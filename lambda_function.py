@@ -13,7 +13,7 @@ def lambda_handler(event, context):
     asyncio.run(main())
     response = {
         "statusCode": 200,
-        "body": json.dumps(str.join(print_list))
+        "body": json.dumps(' '.join(str(e) for e in print_list))
     }
     return response
 
