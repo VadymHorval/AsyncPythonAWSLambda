@@ -6,7 +6,7 @@ import collections
 TABLE_ID = 'app3DEEwui4OTkeDI'
 API_KEY = 'keywRoiRn61Sk3nvo'
 TABLE_NAME = 'MainTable'
-print_list = ''
+print_list = []
 count = 0
 
 def lambda_handler(event, context):
@@ -23,7 +23,7 @@ def lambda_handler(event, context):
 
     response = {
         "statusCode": 200,
-        "body": "11111111111111111111111"
+        "body": r_str
     }
     return response
 
@@ -42,4 +42,5 @@ async def main():
         r_buffer.append(i['fields'].get('title'))
 
     r_buffer.rotate(count)
-    print_list = ('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
+    print_list.append ('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
+r_str = ''
