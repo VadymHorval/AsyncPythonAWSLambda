@@ -13,7 +13,7 @@ def lambda_handler(event, context):
     if event['count']:
         event['count'] +=1
     else:
-        event.updata(count = 0)
+        event.add('count', 0)
 
     asyncio.run(main())
     r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + context.aws_request_id + json.dumps(event)
