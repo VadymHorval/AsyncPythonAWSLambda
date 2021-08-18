@@ -10,14 +10,14 @@ print_list = []
 r_str = ''
 
 def lambda_handler(event, context):
-    # if context.custom['count']:
-    #     context.custom['count'] +=1
-    # else:
-    #     context.custom.add('count', 0)
+
+    if context.client_context:
+        context.client_context += '1'
+    else:
+        context.client_context = '0'
 
     asyncio.run(main())
-    context.client_context = 'count'
-    r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + context.client_context + json.dumps(event)
+    r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + context.client_context +":::Event:""+ json.dumps(event)
     response = {
         "statusCode": 200,
         "body": r_str
