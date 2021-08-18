@@ -6,12 +6,12 @@ import collections
 TABLE_ID = 'app3DEEwui4OTkeDI'
 API_KEY = 'keywRoiRn61Sk3nvo'
 TABLE_NAME = 'MainTable'
-print_list = []
-count = 2
-r_str1 = ''
+print_list = ''
+count = 0
 
 def lambda_handler(event, context):
     str_count = ''
+    global count
 
     for n in event["rawQueryString"]:
         if n.isdigit():
@@ -24,11 +24,13 @@ def lambda_handler(event, context):
 
     response = {
         "statusCode": 200,
-        "body": r_str1
+        "body": print_list
     }
     return response
 
 async def main():
+    global print_list
+    global count
     table_url = f'https://api.airtable.com/v0/{TABLE_ID}/{TABLE_NAME}?fields%5B%5D=ID&fields%5B%5D=title'
     HEADERS = {
         "Authorization": f"Bearer {API_KEY}",
@@ -44,7 +46,6 @@ async def main():
     for i in data['records']:  # init buffer
         r_buffer.append(i['fields'].get('title'))
 
-    r_buffer.rotate(0)
+    r_buffer.rotate(count)
     print(r_buffer)
-    r_str = ('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
-    r_str1 = r_str
+    print_list = ('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|::')
