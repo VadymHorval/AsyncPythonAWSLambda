@@ -12,7 +12,7 @@ r_str = ''
 def lambda_handler(event, context):
 
     if context.client_context:
-        context.client_context += '1'
+        context.client_context = '1'
     else:
         context.client_context = '0'
 
