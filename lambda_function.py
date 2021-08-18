@@ -44,3 +44,4 @@ async def main():
 
     r_buffer.rotate(count)
     r_str = ('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
+    print(r_str)
