@@ -7,10 +7,20 @@ TABLE_ID = 'app3DEEwui4OTkeDI'
 API_KEY = 'keywRoiRn61Sk3nvo'
 TABLE_NAME = 'MainTable'
 print_list = []
+count = 0
+
 def lambda_handler(event, context):
+    str_count = ''
+
+    for n in event["rawQueryString"]:
+        if n.isdigit():
+            str_count += n
+    count = int(str_count)
 
     asyncio.run(main())
-    r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + event["rawQueryString"] +":::Event:"+ json.dumps(event)
+    #r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + event["rawQueryString"] +":::Event:"+ json.dumps(event)
+    r_str = (' '.join(str(e) for e in print_list)) + "!!!!!!!!!!!!!ID:" + event["rawQueryString"]
+
     response = {
         "statusCode": 200,
         "body": r_str
@@ -31,9 +41,6 @@ async def main():
     for i in data['records']:  # init buffer
         r_buffer.append(i['fields'].get('title'))
 
-    #for j in range(len(r_buffer) + 3):  # init data for printing - one loop + three steps
+    r_buffer.rotate(count)
     print_list.append('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|')
-    r_buffer.rotate(1)
-
-r_str = ''
 
