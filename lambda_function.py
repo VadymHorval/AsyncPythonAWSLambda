@@ -9,10 +9,10 @@ TABLE_NAME = 'MainTable'
 print_list = []
 def lambda_handler(event, context):
 
-    # if context.client_context:
-    #     context.client_context = '1'
-    # else:
-    context.client_context = 'count'
+    if context.client_context:
+        context.client_context += '1'
+    else:
+        context.client_context = '0'
 
     asyncio.run(main())
     r_str = (' '.join(str(e) for e in print_list)) +"!!!!!!!!!!!!!ID:" + str(type(context.client_context)) +":::Event:"+ json.dumps(event)
