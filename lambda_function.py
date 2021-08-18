@@ -1,6 +1,6 @@
 import asyncio
 import json
-import requests
+import urllib3
 import collections
 
 TABLE_ID = 'app3DEEwui4OTkeDI'
@@ -23,7 +23,8 @@ async def main():
         "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json"
     }
-    r = requests.get(url=table_url, headers=HEADERS)  # get data
+    http = urllib3.PoolManager()
+    r = http.requests('GET',url=table_url, headers=HEADERS)  # get data
     data = r.json()
     r_buffer = collections.deque(maxlen=len(data['records']))  # create a ring buffer
 
