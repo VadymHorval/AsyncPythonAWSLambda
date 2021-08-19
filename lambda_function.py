@@ -46,4 +46,4 @@ async def main():
 
     r_buffer.rotate(COUNT) #scroll the buffer
     COUNT += 1
-    PRINT_LIST = ('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|::')
+    PRINT_LIST = ( r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2])
