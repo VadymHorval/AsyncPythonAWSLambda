@@ -10,7 +10,7 @@ import urllib3
 
 
 TABLE_ID = 'app3DEEwui4OTkeDI'
-API_KEY = 'keywRoiRn61Sk3nvo'
+API_KEY = 'keywRoiRn61Sk3nvo' #at this stage I did not hide the keys in the system variables
 TABLE_NAME = 'MainTable'
 PRINT_LIST = ''
 COUNT = 0
@@ -46,4 +46,4 @@ async def main():
 
     r_buffer.rotate(COUNT) #scroll the buffer
     COUNT += 1
-    PRINT_LIST += ('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|::')
+    PRINT_LIST = ('|' + r_buffer[0] + '->' + r_buffer[1] + '->' + r_buffer[2] + '|::')
