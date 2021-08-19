@@ -35,6 +35,7 @@ async def main():
         "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json"
     }
+    await asyncio.sleep(1)
     http = urllib3.PoolManager()
     req = http.request('GET',url=table_url, headers=headers)  # get data
     data = json.loads(req.data.decode("utf-8"))
